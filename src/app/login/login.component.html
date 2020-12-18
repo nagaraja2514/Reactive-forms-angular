@@ -1,0 +1,25 @@
+<form name="LoginForm" [formGroup]="loginForm" (ngSubmit)="handleOutput()">
+
+    <div class="div1">
+        <h1><b>Login</b></h1><br>
+        <div>
+            <input name="user" formControlName="user" type="text" placeholder="User Name"><br>
+            <span *ngIf="loginForm.get('user').touched && loginForm.get('user').errors?.required"> please fill the
+                name</span>
+
+        </div>
+        <div>
+            <input name="password" formControlName="password" type="password" placeholder="Password">
+            <span *ngIf="loginForm.get('password').touched && loginForm.get('password').errors">
+                <span *ngIf="loginForm.get('password').errors.required">password required</span>
+                <!-- <span>minimum length should be?? {{ loginForm.get('password').errors| json }} </span> -->
+                <span *ngIf="loginForm.get('password').errors.minlength">minimum length should be {{
+                    loginForm.get('password').errors.minlength.requiredLength}} </span>
+            </span><br>
+            <a class="forget" routerLink="#">Forget password</a>
+
+        </div>
+        <button [disabled]="loginForm.invalid" type="submit">Login</button><br>
+        <p class="singup">Don't have Account?<a routerLink="/singup">sing-up</a></p>
+    </div>
+</form>

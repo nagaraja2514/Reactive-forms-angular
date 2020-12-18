@@ -1,0 +1,41 @@
+<form name="singup" [formGroup]="singup" (ngSubmit)="handleOutput()">
+    <div class="div1">
+        <h3>ANNAMACHARYA INSTITUTE OF TECHNOLOGY AND SCIENCES(AUTONOMOUS) :: TIRUPATI</h3>
+        <h4>Student Option Details for I B.Tech II sem & IV B.Tech II Sem Adv. Supply Exams Nov 2020</h4>
+
+        <input name="name" formControlName="name" type="text" placeholder="Full name">
+
+        <input name="father" formControlName="father" type="text" placeholder="Father name"><br>
+
+        <input name="college" formControlName="college" type="text" placeholder="college name">
+
+        <input name="village" formControlName="village" type="text" placeholder="Village"><br>
+
+        <input name="city" formControlName="city" type="text" placeholder="Enter City name">
+
+        <input name="Distric" formControlName="Distric" type="text" placeholder="Enter Distric name"><br>
+
+        <input name="state" formControlName="state" type="text" placeholder="Enter state">
+
+        <input name="mobile" formControlName="mobile" type="text" placeholder="Enter Mobile Number"><br>
+
+        <input name="mail" formControlName="mail" type="text" placeholder="Enter Gmail">
+
+        <input name="username" formControlName="username" type="text" placeholder="User name"><br>
+
+        <input name="password" formControlName="password" type="text" placeholder="Password">
+
+        <input name="confirmpassword" formControlName="confirmpassword" type="text" placeholder="confirm Password"><br>
+
+        <span *ngIf="singup.get('password').touched && singup.get('password').errors">
+            <span *ngIf="singup.get('password').errors.required">password required</span>
+
+            <span *ngIf="singup.get('password').errors.minlength">minimum length should be {{
+                singup.get('password').errors.minlength.requiredLength}} </span>
+        </span><br>
+
+        <button type="submit" [disabled]="singup.invalid">Singup</button>
+
+    </div>
+
+</form>
